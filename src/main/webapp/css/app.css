@@ -1,0 +1,33 @@
+.bs-callout {
+    padding: 5px;
+
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.bs-callout-info {
+    border-left-color: #808080;
+}
+
+.icons {
+    float: right;
+}
+
+.glyphicon {
+    cursor: pointer;
+    font-size: 130%
+}
+
+.page-header h1 {
+    margin-left: 50px;
+}
+
+.add-task {
+    margin-bottom: 20px;
+}
+
+.modal-save {
+    float: right;
+}
+
