@@ -1,7 +1,16 @@
-app.controller("taskViewerCtrl", function ($scope, taskService) {
+app.controller("taskViewerCtrl", function ($scope, $http, taskService) {
 
-    $scope.taskList = taskService.getTaskList();
 
+    $scope.taskList;
+
+    initTaskList();
+
+    function initTaskList()  {
+        $http.get("http://localhost:8080/task").then(function (response) {
+            $scope.taskList = response.data;
+            taskService.setTasks($scope.taskList);
+        });
+    }
 
     $scope.setCurrentTask = function (id, editorState) {
         taskService.setTask(id);
@@ -34,7 +43,7 @@ app.controller("taskViewerCtrl", function ($scope, taskService) {
     }
 });
 
-app.controller("taskEditorCtrl", function ($scope, taskService) {
+app.controller("taskEditorCtrl", function ($scope, $http, taskService) {
     $scope.currentTask;
     $scope.editorState;
 
@@ -72,6 +81,14 @@ app.controller("taskEditorCtrl", function ($scope, taskService) {
     $scope.editTask = function () {
         $scope.currentTask.description = $scope.description;
         $scope.currentTask.priority = parseInt($scope.priority);
+        $http.post('http://localhost:8080/task/', $scope.currentTask)
+            .success(function () {
+                alert("OK!");
+            })
+            .error(function () {
+               alert("Error post")
+            });
+
     }
 });
 

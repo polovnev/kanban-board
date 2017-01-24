@@ -25,16 +25,16 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void saveTask(Task task) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        taskDao.save(task);
     }
 
     @Override
     public void editTask(Task task) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        taskDao.save(task);
     }
 
     @Override
     public void removeTask(long id) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        taskDao.delete(id);
     }
 }

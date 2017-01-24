@@ -31,8 +31,9 @@ public class TaskController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/task/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/task", method = RequestMethod.POST)
     public void changeTask(@RequestBody Task task) {
+        System.out.println(task.getId());
         taskService.editTask(task);
     }
 
