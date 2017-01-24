@@ -26,22 +26,19 @@ public class TaskController {
 
     @ResponseBody
     @RequestMapping(value = "/task", method = RequestMethod.PUT)
-    public void addTask( @RequestBody Task task) {
-        taskService.saveTask(task);
+    public long addTask(@RequestBody Task task) {
+        return taskService.saveTask(task);
     }
 
     @ResponseBody
     @RequestMapping(value = "/task", method = RequestMethod.POST)
     public void changeTask(@RequestBody Task task) {
-        System.out.println(task.getId());
         taskService.editTask(task);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/task{id}", method = RequestMethod.DELETE)
-    public void removeTask(@PathVariable("id") int id) {
-       taskService.removeTask(id);
+    @RequestMapping(value = "/task/{id}", method = RequestMethod.DELETE)
+    public void removeTask(@PathVariable("id") long id) {
+        taskService.removeTask(id);
     }
-
-
 }

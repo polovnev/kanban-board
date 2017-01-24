@@ -1,18 +1,7 @@
 app.service('taskService', function () {
-    var currentIdInDb = 10;
     var taskList;
-
     var currentTaskId;
     var editorState;
-
-
-    var getCurrentIdInDb = function () {
-        return currentIdInDb;
-    }
-
-    var setCurrentIdInDb = function (id) {
-        currentIdInDb = id;
-    }
 
     var getTaskList = function () {
         return taskList;
@@ -48,8 +37,6 @@ app.service('taskService', function () {
 
 
     return {
-        getCurrentIdInDb: getCurrentIdInDb,
-        setCurrentIdInDb: setCurrentIdInDb,
         getTaskList: getTaskList,
         getCurrentTask: getCurrentTask,
         setTask: setTask,

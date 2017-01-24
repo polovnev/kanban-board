@@ -13,7 +13,7 @@ public class Task {
     }
 
     private long id;
-    private int date;
+    private long date;
     private int priority;
     private String description;
     private int status;
@@ -30,11 +30,11 @@ public class Task {
     }
 
     @Column(name="date")
-    public int getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(long date) {
         this.date = date;
     }
 

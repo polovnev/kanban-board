@@ -11,7 +11,7 @@ public interface TaskService {
 
     Iterable<Task> getTasks();
 
-    void saveTask(Task task);
+    long saveTask(Task task);
 
     void editTask(Task task);
 
