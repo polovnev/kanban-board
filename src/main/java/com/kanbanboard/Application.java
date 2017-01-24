@@ -2,15 +2,10 @@ package com.kanbanboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
-import org.springframework.context.annotation.ImportResource;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 
 
-@SpringBootApplication( )
+@SpringBootApplication()
 public class Application {
 
     public static void main(String[] args) throws Exception {
@@ -25,6 +20,8 @@ public class Application {
 
         SpringApplication.run(Application.class, args);
         System.out.println("Open http://localhost:8080/");
+
+
     }
 
 }

@@ -5,8 +5,6 @@ import com.kanbanboard.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 
 @RestController
 public class TaskController {
@@ -17,7 +15,6 @@ public class TaskController {
     @ResponseBody
     @RequestMapping(value = "/task", method = RequestMethod.GET)
     public Iterable<Task> getAllTasks() {
-        System.out.println("1");
         return taskService.getTasks();
     }
 

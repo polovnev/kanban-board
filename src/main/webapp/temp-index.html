@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" >
+<html lang="en-US" ng-app="app">
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="css/bootstrap-modal.css">
@@ -28,7 +28,6 @@
         <br>
 
         <div class="alert alert-danger" role="alert"><h4>High</h4><input type="radio" ng-model="priority"
-
                                                                          value="1"></div>
 
         <br>
@@ -55,7 +54,7 @@
     <div class="modal-body">
         <div class="input-group input-group-sm" ng-hide="editorState==1">
             <span class="input-group-addon">Description</span>
-            <input type="text" class="form-control"  ng-model="currentTask.description" placeholder="enter task description"
+            <input type="text" class="form-control"  ng-model="description" placeholder="enter task description"
                    >
         </div>
         <div class="well well-sm" ng-hide="editorState==0">{{currentTask.description}}</div>
@@ -87,7 +86,7 @@
     </h1>
 </div>
 
-<div class="container" ng-controller="taskViewerCtrl" ng-focus="getTaskList()">
+<div class="container" ng-controller="taskViewerCtrl">
     <button class="btn btn-success add-task" data-toggle="modal" data-target="#addTaskModal">Add new task</button>
     <div class="row">
         <div class="col-xs-3">
@@ -175,5 +174,6 @@
 
 <script src="js/app.js"></script>
 <script src="js/ctrl.js"></script>
+<script src="js/service.js"></script>
 </body>
 </html> 

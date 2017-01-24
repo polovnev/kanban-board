@@ -1,73 +1,8 @@
-app.service('taskService', function () {
+app.controller("taskViewerCtrl", function ($scope, taskService) {
 
-    var currentIdInDb = 10;
-
-    var taskList;
-
-
-    var currentTaskId;
-    var editorState;
-
-
-    var getCurrentIdInDb = function () {
-        return currentIdInDb;
-    }
-
-    var setCurrentIdInDb = function(id) {
-        currentIdInDb = id;
-    }
-
-    var getTaskList = function () {
-        return taskList;
-    }
-
-    function searchById(element) {
-        return element.id == currentTaskId;
-    }
-
-    function setTask(id) {
-        currentTaskId = id;
-    }
-
-    var getCurrentTask = function () {
-        return taskList.find(searchById);
-    }
-
-    function setEditorState(state) {
-        editorState = state;
-    }
-
-    var getEditorState = function () {
-        return editorState;
-    }
-
-    var addTask = function (task) {
-        taskList.push(task);
-    }
-
-    var initTaskList = function(tasks) {
-        taskList = tasks;
-    }
-
-
-
-
-    return {
-        getCurrentIdInDb: getCurrentIdInDb,
-        setCurrentIdInDb: setCurrentIdInDb,
-        getTaskList: getTaskList,
-        getCurrentTask: getCurrentTask,
-        setTask: setTask,
-        getEditorState: getEditorState,
-        setEditorState: setEditorState,
-        addTask: addTask,
-        initTaskList: initTaskList
-    };
-
-});
-
-app.controller("taskViewerCtrl", function ($scope, $http, taskService) {
     $scope.taskList = taskService.getTaskList();
+
+
     $scope.setCurrentTask = function (id, editorState) {
         taskService.setTask(id);
         taskService.setEditorState(editorState);
@@ -95,13 +30,7 @@ app.controller("taskViewerCtrl", function ($scope, $http, taskService) {
         taskService.setTask(id);
         var task = taskService.getCurrentTask();
         var index = $scope.taskList.indexOf(task);
-        $scope.taskList.splice(index,1);
-    }
-
-    $scope.getTaskList = function () {
-        $http.get("/task").then(function(response) {
-            taskService.initTaskList(response);
-        })
+        $scope.taskList.splice(index, 1);
     }
 });
 
@@ -117,6 +46,8 @@ app.controller("taskEditorCtrl", function ($scope, taskService) {
     $scope.initEditor = function () {
         $scope.currentTask = taskService.getCurrentTask();
         $scope.editorState = taskService.getEditorState();
+        $scope.description = $scope.currentTask.description;
+
     }
 
     $scope.addTask = function () {
@@ -139,11 +70,8 @@ app.controller("taskEditorCtrl", function ($scope, taskService) {
 
 
     $scope.editTask = function () {
+        $scope.currentTask.description = $scope.description;
         $scope.currentTask.priority = parseInt($scope.priority);
     }
 });
 
-app.controller("mainCtrl", function ($scope, taskService, $http) {
-
-
-});
