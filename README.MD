@@ -1,4 +1,3 @@
-1) Import source as maven project and build
+1) Import source as maven project and build (need java 8)
 2) Start Application.java 
 
-need java 8
