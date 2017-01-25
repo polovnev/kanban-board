@@ -38,19 +38,16 @@ app.controller("taskViewerCtrl", function ($scope, $http, taskService) {
 
     $scope.removeTask = function (id) {
         taskService.setTask(id);
-        if (confirm("Are you sure?")) {
-            $http.delete('http://localhost:8080/task/' + id, $scope.currentTask).then(function () {
-                var task = taskService.getCurrentTask();
-                var index = $scope.taskList.indexOf(task);
-                $scope.taskList.splice(index, 1);
-            });
-        }
+        $http.delete('http://localhost:8080/task/' + id, $scope.currentTask).then(function () {
+            var task = taskService.getCurrentTask();
+            var index = $scope.taskList.indexOf(task);
+            $scope.taskList.splice(index, 1);
+        });
+
     }
 
     function saveStatus(task) {
-        if (confirm("Are you sure?")) {
-            $http.post('http://localhost:8080/task/', task);
-        }
+        $http.post('http://localhost:8080/task/', task);
     }
 
 });
