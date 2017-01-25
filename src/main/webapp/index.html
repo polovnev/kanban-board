@@ -54,8 +54,7 @@
     <div class="modal-body">
         <div class="input-group input-group-sm" ng-hide="editorState==1">
             <span class="input-group-addon">Description</span>
-            <input type="text" class="form-control"  ng-model="description" placeholder="enter task description"
-                   >
+            <input type="text" class="form-control"  ng-model="description" placeholder="enter task description">
         </div>
         <div class="well well-sm" ng-hide="editorState==0">{{currentTask.description}}</div>
         <br>
@@ -99,12 +98,12 @@
                     <div ng-repeat="task in taskList | orderBy : '-date' | orderBy : 'priority'  | filter:{'status':  1}">
                         <div class="alert " role="alert"
                              ng-class="task.priority == 1 ? 'alert-danger' : (task.priority == 2 ? 'alert-warning' : 'alert-info')">
-                            <div class="icons"><span class="glyphicon glyphicon-pencil"
+                            <div class="icons"><span class="glyphicon glyphicon-pencil"  title="EDIT"
                                                      ng-click="setCurrentTask(task.id, 0)" data-toggle="modal"
                                                      data-target="#editTaskModal"></span><span
                                     class="glyphicon glyphicon-send"
-                                    ng-click="setStateInProgress(task.id)"></span>  <span
-                                    class="glyphicon glyphicon-remove" ng-click="setStateInAborted(task.id)"></span>
+                                    ng-click="setStateInProgress(task.id)" title="IN PROGRESS"></span>  <span
+                                    class="glyphicon glyphicon-remove" ng-click="setStateInAborted(task.id)" title="ABORT"></span>
                             </div>
                             <b>{{task.date | date:'dd.MM.yyyy HH:mm'}}</b><br><i>{{task.description}}</i>
                         </div>
@@ -124,9 +123,9 @@
                              ng-class="task.priority == 1 ? 'alert-danger' : (task.priority == 2 ? 'alert-warning' : 'alert-info')">
                             <div class="icons"><span class="glyphicon glyphicon-pencil"
                                                      ng-click="setCurrentTask(task.id, 1)" data-toggle="modal"
-                                                     data-target="#editTaskModal"></span><span
-                                    class="glyphicon glyphicon-ok" ng-click="setStateInDone(task.id)"></span>  <span
-                                    class="glyphicon glyphicon-remove" ng-click="setStateInAborted(task.id)"></span>
+                                                     data-target="#editTaskModal" title="EDIT"></span><span
+                                    class="glyphicon glyphicon-ok" ng-click="setStateInDone(task.id)" title="DONE"></span>  <span
+                                    class="glyphicon glyphicon-remove" ng-click="setStateInAborted(task.id)" title="ABORT"></span>
                             </div>
                             <b>{{task.date | date:'dd.MM.yyyy HH:mm'}}</b><br><i>{{task.description}}</i>
                         </div>
@@ -144,7 +143,7 @@
                         <div class="alert " role="alert"
                              ng-class="task.priority == 1 ? 'alert-danger' : (task.priority == 2 ? 'alert-warning' : 'alert-info')">
                             <div class="icons"><span class="glyphicon glyphicon-trash " aria-hidden="true"
-                                                     ng-click="removeTask(task.id)"></span></div>
+                                                     ng-click="removeTask(task.id)" title="REMOVE"></span></div>
                             <b>{{task.date | date:'dd.MM.yyyy HH:mm'}}</b><br><i>{{task.description}}</i>
                         </div>
                     </div>
@@ -161,7 +160,7 @@
                         <div class="alert " role="alert"
                              ng-class="task.priority == 1 ? 'alert-danger' : (task.priority == 2 ? 'alert-warning' : 'alert-info')">
                             <div class="icons"><span class="glyphicon glyphicon-trash " aria-hidden="true"
-                                                     ng-click="removeTask(task.id)"></span></div>
+                                                     ng-click="removeTask(task.id)" title="REMOVE"></span></div>
                             <b>{{task.date | date:'dd.MM.yyyy HH:mm'}}</b><br><i>{{task.description}}</i>
                         </div>
                     </div>
@@ -175,5 +174,10 @@
 <script src="js/app.js"></script>
 <script src="js/ctrl.js"></script>
 <script src="js/service.js"></script>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 </body>
 </html> 

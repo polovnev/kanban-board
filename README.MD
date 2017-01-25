@@ -1,3 +1,4 @@
-1) Put file kanban.mv.db to root of disc D:/
-2) Import source as maven project
-3) Start Application.java 
+1) Import source as maven project and build
+2) Start Application.java 
+
+need java 8
